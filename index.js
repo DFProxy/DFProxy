@@ -4,8 +4,8 @@ let proxyClient
 
 const info = { login: '', slot: 0, recipes: '', tags: '', abilities: '', commands: '', unlockrecipes: '', players: [], chunks: [] }
 
-const client = mc.createClient({
-  host: 'mcdiamondfire.com',
+var client = mc.createClient({
+  host: 'goseale.aternos.me',
   port: 25565,
   username: 'smack--snack@hotmail.com',
   password: 'santsnack1995',
@@ -49,6 +49,19 @@ client.on('packet', (data, meta) => {
   }
   if (meta.name === 'player_info') {
     info.players.push(data)
+  }
+  if (meta.name === 'kick_disconnect') {
+    console.log(data)
+    setTimeout(() => {
+      client = mc.createClient({
+        host: 'goseale.aternos.me',
+        port: 25565,
+        username: 'smack--snack@hotmail.com',
+        password: 'santsnack1995',
+        version: '1.13.2'
+      })
+    }, 3000)
+    return;
   }
   if (proxyClient) {
     filterPacketAndSend(data, meta, proxyClient)
@@ -117,11 +130,24 @@ server.on('login', (newProxyClient) => {
         const args = message.split(/\s+/g)
         const command = args.shift().substr(1)
         console.log(command)
+        /*
         if (command === 'dfproxy') {
           chat(newProxyClient, 'DF Proxy is a project made by SiebeDW#4501 to make DF gameplay even BETTER!')
           newProxyClient.write('game_state_change', { reason: 3, gameMode: 3 })
           return
         }
+        */
+       if (command === "dfproxy_TP") {
+        newProxyClient.write('position', {
+          x: args[0],
+          y: args[1],
+          z: args[2],
+          yaw: 0,
+          pitch: 0,
+          flags: 0x00
+        })
+       }
+       return
       }
     }
     filterPacketAndSend(data, meta, client)
@@ -138,10 +164,8 @@ function filterPacketAndSend (data, meta, dest) {
   }
 }
 function stop () {
-  client.end()
-  if (proxyClient) {
-    proxyClient.end('Stopped the proxy.')
-  }
-  server.close()
+  
+  
+  
 }
 console.log('Loaded.')
