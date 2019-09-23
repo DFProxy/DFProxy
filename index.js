@@ -61,7 +61,7 @@ client.on('packet', (data, meta) => {
         version: '1.13.2'
       })
     }, 3000)
-    return;
+    return
   }
   if (proxyClient) {
     filterPacketAndSend(data, meta, proxyClient)
@@ -137,17 +137,17 @@ server.on('login', (newProxyClient) => {
           return
         }
         */
-       if (command === "dfproxy_TP") {
-        newProxyClient.write('position', {
-          x: args[0],
-          y: args[1],
-          z: args[2],
-          yaw: 0,
-          pitch: 0,
-          flags: 0x00
-        })
-       }
-       return
+        if (command === 'dfproxy_TP') {
+          newProxyClient.write('position', {
+            x: args[0],
+            y: args[1],
+            z: args[2],
+            yaw: 0,
+            pitch: 0,
+            flags: 0x00
+          })
+        }
+        return
       }
     }
     filterPacketAndSend(data, meta, client)
@@ -155,17 +155,15 @@ server.on('login', (newProxyClient) => {
 
   proxyClient = newProxyClient
 })
-function chat (client, text) {
-  client.write('chat', { message: `{"extra":[{"text":"${text}"}],"text":""}`, position: 1 })
-}
+// function chat (client, text) {
+//   client.write('chat', { message: `{"extra":[{"text":"${text}"}],"text":""}`, position: 1 })
+// }
 function filterPacketAndSend (data, meta, dest) {
   if (meta.name !== 'keep_alive' && meta.name !== 'update_time') {
     dest.write(meta.name, data)
   }
 }
 function stop () {
-  
-  
-  
+
 }
 console.log('Loaded.')

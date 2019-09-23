@@ -1,0 +1,5 @@
+const DFProxy = require('./structures/dfproxy.js')
+var dfproxy = new DFProxy({ port: 25565 })
+dfproxy.loadCommands('../commands/')
+dfproxy.loadServerPacketsEvents('../serverpackets/')
+dfproxy.loadClientPacketsEvents('../clientpackets/')
