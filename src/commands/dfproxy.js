@@ -11,5 +11,6 @@ module.exports = class DFProxy extends Command {
 
   async run (args, client, proxyClient, proxy) {
     this.chat('HII')
+    this.announce('Welcome Back!')
   }
 }

@@ -1,0 +1,29 @@
+{
+  "name": "dfproxy",
+  "version": "1.0.0",
+  "description": "[![Travis CI](https://img.shields.io/travis/DFProxy/DFProxy)](https://travis-ci.org/DFProxy/DFProxy)\r [![Minecraft](https://img.shields.io/badge/minecraft-1.13.2-informational)](https://minecraft.gamepedia.com/Java_Edition_1.13.2/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "pretest": "npm run lint",
+    "lint": "standard",
+    "fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiebeDW/DFProxy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SiebeDW/DFProxy/issues"
+  },
+  "homepage": "https://github.com/SiebeDW/DFProxy#readme",
+  "dependencies": {
+    "minecraft-protocol": "^1.9.4"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0",
+    "standard": "^14.3.1"
+  }
+}
