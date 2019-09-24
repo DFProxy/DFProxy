@@ -1,9 +1,9 @@
 //
-// The CHAT class is a packet class
-// that handles in-game Minecraft
-// chat.
+// The client CHAT class is a packet class
+// that handles in-game Minecraft chat routed 
+// through the client.
 //
-const Packet = require('../structures/packet.js')
+const Packet = require('../structures/packet.js');
 
 module.exports = class Chat extends Packet {
   constructor (client) {
