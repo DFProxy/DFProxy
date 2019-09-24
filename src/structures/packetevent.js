@@ -1,4 +1,4 @@
-class Packet {
+class PacketEvent {
   constructor (dfproxy, options) {
     /**
              * Spammy :)
@@ -16,4 +16,4 @@ class Packet {
 }
 
 // Export the command class
-module.exports = Packet
+module.exports = PacketEvent

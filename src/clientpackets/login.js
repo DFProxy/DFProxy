@@ -1,6 +1,6 @@
-const Packet = require('../structures/packet.js')
+const PacketEvent = require('../structures/packetevent.js')
 
-module.exports = class Login extends Packet {
+module.exports = class Login extends PacketEvent {
   constructor (client) {
     super(client, {
       name: 'login'
