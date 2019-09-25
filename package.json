@@ -4,8 +4,7 @@
   "description": "[![Travis CI](https://img.shields.io/travis/DFProxy/DFProxy)](https://travis-ci.org/DFProxy/DFProxy)\r [![Minecraft](https://img.shields.io/badge/minecraft-1.13.2-informational)](https://minecraft.gamepedia.com/Java_Edition_1.13.2/)",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec",
-    "pretest": "npm run lint",
+    "test": "standard && node src/index.js",
     "lint": "standard",
     "fix": "standard --fix"
   },
@@ -23,7 +22,6 @@
     "minecraft-protocol": "^1.9.4"
   },
   "devDependencies": {
-    "mocha": "^6.2.0",
     "standard": "^14.3.1"
   }
 }

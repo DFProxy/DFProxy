@@ -28,8 +28,6 @@ class DFProxy {
       writeable: true
     })
 
-    Object.defineProperty(this, 'reconnecting', { value: false, writeable: true })
-
     this.proxy.on('login', client => this.clientLogin(client))
   }
 
