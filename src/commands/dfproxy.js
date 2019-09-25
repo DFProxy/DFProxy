@@ -9,8 +9,8 @@ module.exports = class DFProxy extends Command {
     })
   }
 
-  async run (args, client, proxyClient, proxy) {
+  async run (args) {
     this.chat('HII')
-    this.announce('Welcome Back!')
+    this.announce('Welcome Back! ' + this.dfproxy.client.health)
   }
 }

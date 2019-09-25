@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/SiebeDW/DFProxy#readme",
   "dependencies": {
-    "minecraft-protocol": "^1.9.4"
+    "minecraft-protocol": "^1.9.4",
+    "prismarine-item": "^1.1.1"
   },
   "devDependencies": {
     "standard": "^14.3.1"

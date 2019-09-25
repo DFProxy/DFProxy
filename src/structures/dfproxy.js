@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const item = require('prismarine-item')('1.13.2')
 
 const Proxy = require('./proxy.js')
 const Client = require('./client.js')
@@ -16,6 +17,8 @@ class DFProxy {
 
     Object.defineProperty(this, 'email', { value: options.email })
     Object.defineProperty(this, 'password', { value: options.password })
+
+    Object.defineProperty(this, 'item', { value: item })
 
     Object.defineProperty(this, 'proxy', {
       value: new Proxy({
@@ -42,12 +45,11 @@ class DFProxy {
       password: this.password,
       version: '1.13.2'
     }).on('packet', (data, meta) => {
-      console.log('PROXY CLIENT PACKET:' + meta.name)
-
       var serverPacketEvent = this.serverPacketEvents.get(meta.name)
       if (serverPacketEvent && serverPacketEvent.run) {
         serverPacketEvent.run(meta, data, this.client, this.proxyClient, this.proxy)
         if (serverPacketEvent.canceled === true) {
+          serverPacketEvent.canceled = false
           return
         }
       }
@@ -70,12 +72,13 @@ class DFProxy {
     console.log('Player joined!')
 
     client.on('packet', (data, meta) => {
-      console.log('CLIENT PACKET: ' + meta.name)
+      // console.log('CLIENT PACKET: ' + meta.name)
 
       var clientPacketEvent = this.clientPacketEvents.get(meta.name)
       if (clientPacketEvent && clientPacketEvent.run) {
-        clientPacketEvent.run(meta, data, client, this.proxyClient, this.proxy)
+        clientPacketEvent.run(meta, data, this.client, this.proxyClient, this.proxy)
         if (clientPacketEvent.canceled === true) {
+          clientPacketEvent.canceled = false
           return
         }
       }
