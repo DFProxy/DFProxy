@@ -9,8 +9,13 @@ module.exports = class DFProxy extends Command {
     })
   }
 
-  async run (args) {
+  async run (args, client, proxyClient, proxy) {
     this.chat('HII')
-    this.announce('Welcome Back! ' + this.dfproxy.client.health)
+    this.announce('Welcome Back! ' + client.health)
+    const item = new this.dfproxy.Item(1, 1)
+    proxyClient.write('set_creative_slot', {
+      slot: 43,
+      item: this.dfproxy.Item.toNotch(item)
+    })
   }
 }

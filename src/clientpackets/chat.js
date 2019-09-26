@@ -21,7 +21,7 @@ module.exports = class Chat extends PacketEvent {
       const cmd = this.dfproxy.commands.get(command)
       if (cmd && cmd.run) {
         this.cancelPacket()
-        cmd.run()
+        cmd.run(args, client, proxyClient, proxy)
       }
     }
   }
