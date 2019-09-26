@@ -8,8 +8,9 @@ module.exports = class SetSlot extends PacketEvent {
   }
 
   async run (meta, data, client, proxyClient, proxy) {
-    // Some test stuff
-    var notchitem = this.dfproxy.item.fromNotch(data.item)
-    console.log(notchitem)
+    // Does not work, needs fix!
+    client.inventory.updateSlot(data.slot, this.dfproxy.Item.fromNotch(data.item))
+    console.log(client.inventory.items())
+    console.log('Updated inventory slot')
   }
 }
