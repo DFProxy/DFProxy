@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const item = require('prismarine-item')('1.13.2')
+const windows = require('prismarine-windows')('1.13.2').windows
 
 const Proxy = require('./proxy.js')
 const Client = require('./client.js')
@@ -18,7 +19,8 @@ class DFProxy {
     Object.defineProperty(this, 'email', { value: options.email })
     Object.defineProperty(this, 'password', { value: options.password })
 
-    Object.defineProperty(this, 'item', { value: item })
+    Object.defineProperty(this, 'Item', { value: item })
+    Object.defineProperty(this, 'windows', { value: windows })
 
     Object.defineProperty(this, 'proxy', {
       value: new Proxy({
@@ -43,7 +45,8 @@ class DFProxy {
       port: 25565,
       username: this.email,
       password: this.password,
-      version: '1.13.2'
+      version: '1.13.2',
+      dfproxy: this
     }).on('packet', (data, meta) => {
       var serverPacketEvent = this.serverPacketEvents.get(meta.name)
       if (serverPacketEvent && serverPacketEvent.run) {
@@ -73,6 +76,13 @@ class DFProxy {
 
     client.on('packet', (data, meta) => {
       // console.log('CLIENT PACKET: ' + meta.name)
+      console.log(meta.name)
+      if (meta.name === 'set_creative_slot') {
+        console.log(this.Item.fromNotch(data.item))
+      }
+      if (meta.name === 'held_item_slot') {
+        console.log(data)
+      }
 
       var clientPacketEvent = this.clientPacketEvents.get(meta.name)
       if (clientPacketEvent && clientPacketEvent.run) {
