@@ -7,11 +7,11 @@ class Command {
     this.usage = options.usage || ''
   }
 
-  chat (text) {
+  static chat (text) {
     this.dfproxy.client.write('chat', { message: `{"extra":[{"text":"${text}"}],"text":""}`, position: 1 })
   }
 
-  announce (text) {
+  static announce (text) {
     this.dfproxy.client.write('title', { action: 0, text: '{"extra":[{"color":"gray","text":"["},{"color":"green","text":"DFProxy"},{"color":"gray","text":"]"}],"text":""}' })
     this.dfproxy.client.write('title', { action: 1, text: `{"extra":[{"color":"aqua","text":"${text}"}],"text":""}` })
   }
