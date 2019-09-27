@@ -4,8 +4,7 @@ const item = require('prismarine-item')('1.13.2')
 const windows = require('prismarine-windows')('1.13.2').windows
 
 const Proxy = require('./proxy.js')
-const Client = require('./client.js')
-
+const ProxyClient = require('./proxyclient.js')
 const error = require('../utils/error.js')
 
 class DFProxy {
@@ -20,7 +19,6 @@ class DFProxy {
     Object.defineProperty(this, 'password', { value: options.password })
 
     Object.defineProperty(this, 'Item', { value: item })
-    Object.defineProperty(this, 'windows', { value: windows })
 
     Object.defineProperty(this, 'proxy', {
       value: new Proxy({
@@ -40,7 +38,7 @@ class DFProxy {
   }
 
   loginProxyClient () {
-    this.proxyClient = new Client({
+    this.proxyClient = new ProxyClient({
       host: 'beta.mcdiamondfire.com',
       port: 25565,
       username: this.email,
@@ -71,6 +69,8 @@ class DFProxy {
   clientLogin (client) {
     console.log('Player joining...')
     this.client = client
+    this.client.inventory = new windows.InventoryWindow(0, 'Inventory', 44)
+
     this.loginProxyClient(client)
     console.log('Player joined!')
 
@@ -98,7 +98,7 @@ class DFProxy {
 
   filterPacketAndSend (data, meta, dest) {
     if (meta.name !== 'keep_alive' && meta.name !== 'update_time' && meta.name !== 'encryption_begin' && meta.name !== 'compress' && meta.name !== 'success') {
-      if (!dest) return
+      if (!dest.write) return
       dest.write(meta.name, data)
     }
   }
