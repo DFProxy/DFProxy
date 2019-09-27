@@ -1,6 +1,6 @@
 const Command = require('../structures/Command.js')
 
-module.exports = class DFProxy extends Command {
+module.exports = class CommandDFProxy extends Command {
   constructor (client) {
     super(client, {
       name: 'dfproxy',
