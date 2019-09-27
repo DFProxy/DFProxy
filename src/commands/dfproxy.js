@@ -10,6 +10,7 @@ module.exports = class CommandDFProxy extends Command {
   }
 
   async run (args, client, proxyClient, proxy) {
+    console.log('hi')
     this.chat('HII')
     this.announce('Welcome Back! ' + client.health)
     const item = new this.dfproxy.Item(1, 1)
