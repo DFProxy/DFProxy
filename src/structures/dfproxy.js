@@ -98,7 +98,7 @@ class DFProxy {
     }
   }
 
-  loadServerPacketsEvents (dir) {
+  loadServerPacketsEvents (dir, cb) {
     fs.readdir(path.join(__dirname, `${dir}`), (error, packetEvents) => {
       if (error) {
         return console.log(error);
@@ -110,15 +110,18 @@ class DFProxy {
 
         const props = new (require(path.join(__dirname, `${dir}/${packetevent}`)))(this);
 
-        if (props.init) await props.init(this);
+        if (props.init) props.init(this);
 
         this.serverPacketEvents.set(props.name, props);
-        console.log(`Loaded server packet event ${props.name} in ${Date.now() - start}ms.`);
+        console.log(`Loaded server packet event ${props.name} in ${Date.now() - start}ms (${i + 1}/${packetEvents.length}).`);
+        if (i === packetEvents.length - 1) {
+          cb();
+        }
       });
     });
   }
 
-  loadClientPacketsEvents (dir) {
+  loadClientPacketsEvents (dir, cb) {
     fs.readdir(path.join(__dirname, `${dir}`), (error, packetEvents) => {
       if (error) {
         return console.log(error);
@@ -130,10 +133,13 @@ class DFProxy {
 
         const props = new (require(path.join(__dirname, `${dir}/${packetevent}`)))(this);
 
-        if (props.init) await props.init(this);
+        if (props.init) props.init(this);
 
         this.clientPacketEvents.set(props.name, props);
-        console.log(`Loaded client packet event ${props.name} in ${Date.now() - start}ms.`);
+        console.log(`Loaded client packet event ${props.name} in ${Date.now() - start}ms (${i + 1}/${packetEvents.length}).`);
+        if (i === packetEvents.length - 1) {
+          cb();
+        }
       });
     });
   }

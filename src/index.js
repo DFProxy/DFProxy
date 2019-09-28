@@ -13,8 +13,16 @@ if (!process.env.CI) {
 }
 
 dfproxy.loadCommands('../commands/');
-dfproxy.loadServerPacketsEvents('../serverpackets/');
-dfproxy.loadClientPacketsEvents('../clientpackets/');
+dfproxy.loadServerPacketsEvents('../serverpackets/', () => {
+  dfproxy.loadClientPacketsEvents('../clientpackets/', () => {
+    if (process.env.CI) {
+      console.log('Done loading! Seems like we are in a CI. Exiting with code 0.');
+      process.exit(0);
+    } else {
+      console.log('Done loading!');
+    }
+  });
+});
 
 process
   .on('uncaughtException', err => error(err.stack))
