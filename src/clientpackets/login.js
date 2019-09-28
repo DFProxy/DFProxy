@@ -1,5 +1,5 @@
 
-const PacketEvent = require('../structures/packetevent.js')
+const PacketEvent = require('../structures/packetevent.js');
 
 //
 // The LOGIN class is a packet class
@@ -11,10 +11,10 @@ module.exports = class Login extends PacketEvent {
   constructor (client) {
     super(client, {
       name: 'login'
-    })
+    });
   }
 
   run (meta, data, client, proxyClient, proxy) {
-    console.log('hi')
+    console.log('hi');
   }
-}
+};
