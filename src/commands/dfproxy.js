@@ -11,8 +11,8 @@ module.exports = class CommandDFProxy extends Command {
 
   async run (args, client, proxyClient, proxy) {
     console.log('hi')
-    this.chat('HII')
-    this.announce('Welcome Back! ' + client.health)
+    this.chat('Full command list coming soon!')
+    this.announce('DEBUG: ' + client.health)
     const item = new this.dfproxy.Item(1, 1)
     proxyClient.write('set_creative_slot', {
       slot: 43,
