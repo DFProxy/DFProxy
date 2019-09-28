@@ -8,6 +8,6 @@ module.exports = class GameStateChange extends PacketEvent {
   }
 
   async run (meta, data, client, proxyClient, proxy) {
-    client.gamemode = data.gamemode;
+    client.gamemode = data.gameMode;
   }
 };
