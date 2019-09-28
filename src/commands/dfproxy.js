@@ -1,4 +1,4 @@
-const Command = require('../structures/Command.js');
+const Command = require('../structures/command.js');
 
 module.exports = class CommandDFProxy extends Command {
   constructor (client) {
