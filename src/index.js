@@ -10,3 +10,15 @@ if (!config.email || !config.password || !config.port) {
 dfproxy.loadCommands('../commands/')
 dfproxy.loadServerPacketsEvents('../serverpackets/')
 dfproxy.loadClientPacketsEvents('../clientpackets/')
+
+process
+  .on('uncaughtException', err => error(err.stack))
+  .on('unhandledRejection', err => error(err.stack))
+function error (err) {
+  console.log('ERROR!\n' + err)
+  if (dfproxy.client) {
+    dfproxy.client.end('§cWhooops! Error found :(!\nRejoin to play again!\n§c§lPlease report the error (logged in console) in our discord!')
+    dfproxy.client = undefined
+    dfproxy.proxyClient = undefined
+  }
+}
