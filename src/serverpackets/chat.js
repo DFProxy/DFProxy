@@ -1,4 +1,4 @@
-const PacketEvent = require('../structures/packetevent.js')
+const PacketEvent = require('../structures/packetevent.js');
 
 //
 // The server-side CHAT class is a
@@ -10,10 +10,10 @@ module.exports = class Chat extends PacketEvent {
   constructor (client) {
     super(client, {
       name: 'chat'
-    })
+    });
   }
 
   async run (meta, data, client, proxyClient, proxy) {
 
   }
-}
+};
