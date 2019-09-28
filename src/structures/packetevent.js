@@ -4,16 +4,16 @@ class PacketEvent {
              * Spammy :)
              * @type {Spammy}
              */
-    this.dfproxy = dfproxy
+    this.dfproxy = dfproxy;
 
-    this.name = options.name // Packet name
-    this.canceled = false
+    this.name = options.name; // Packet name
+    this.canceled = false;
   }
 
   cancelPacket () {
-    this.canceled = true
+    this.canceled = true;
   }
 }
 
 // Export the command class
-module.exports = PacketEvent
+module.exports = PacketEvent;

@@ -1,10 +1,10 @@
-const PacketEvent = require('../structures/packetevent.js')
+const PacketEvent = require('../structures/packetevent.js');
 
 module.exports = class BlockPlace extends PacketEvent {
   constructor (client) {
     super(client, {
       name: 'block_place'
-    })
+    });
   }
 
   run (meta, data, client, proxyClient, proxy) {
@@ -18,12 +18,12 @@ module.exports = class BlockPlace extends PacketEvent {
           cursorX: data.cursorX,
           cursorY: data.cursorZY,
           cursorZ: data.cursorZ
-        })
-      }, 100)
+        });
+      }, 100);
     }
   }
 
   init () {
-    console.log('hi')
+    console.log('hi');
   }
-}
+};
