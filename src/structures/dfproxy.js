@@ -75,11 +75,7 @@ class DFProxy {
     console.log('Player joined!')
 
     client.on('packet', (data, meta) => {
-      // console.log('CLIENT PACKET: ' + meta.name)
-      console.log(meta.name)
-      if (meta.name === 'set_creative_slot') {
-        console.log(this.Item.fromNotch(data.item))
-      }
+      console.log('CLIENT PACKET: ' + meta.name)
       if (meta.name === 'held_item_slot') {
         console.log(data)
       }
