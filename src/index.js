@@ -20,6 +20,10 @@ process
   .on('uncaughtException', err => error(err.stack))
   .on('unhandledRejection', err => error(err.stack));
 function error (err) {
+  if (process.env.CI) {
+    console.error(err);
+    process.exit(1);
+  }
   console.log('ERROR!\n' + err);
   if (dfproxy.client) {
     dfproxy.client.end('§cWhooops! Error found :(!\nRejoin to play again!\n§c§lPlease report the error (logged in console) in our discord!');
