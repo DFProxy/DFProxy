@@ -15,6 +15,5 @@ module.exports = class Login extends PacketEvent {
   }
 
   run (meta, data, client, proxyClient, proxy) {
-    console.log('hi');
   }
 };
