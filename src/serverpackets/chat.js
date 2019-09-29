@@ -14,6 +14,23 @@ module.exports = class Chat extends PacketEvent {
   }
 
   async run (meta, data, client, proxyClient, proxy) {
-
+    var fullmessage = JSON.parse(data.message.toString());
+    if (!fullmessage.extra) return;
+    var message = '';
+    for (var i in fullmessage.extra) {
+      if (fullmessage.extra[i].text) {
+        message = message + fullmessage.extra[i].text.toLowerCase();
+      }
+    }
+    if (message.startsWith('dfproxy')) {
+      const args = message.split('|');
+      args.shift();
+      const command = args.shift();
+      const customAction = this.dfproxy.customActions.get(command);
+      if (customAction && customAction.run) {
+        this.cancelPacket();
+        customAction.run(args, client, proxyClient, proxy);
+      }
+    }
   }
 };

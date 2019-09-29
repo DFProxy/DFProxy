@@ -17,10 +17,11 @@ module.exports = class DFProxy extends Command {
       slot: 43,
       item: this.dfproxy.Item.toNotch(item)
     });
-    client.write('abilities', {
-      flags: 4,
-      flyingSpeed: 0.05000000074505806,
-      walkingSpeed: 0.10000000149011612
-    });
+    // client.write('abilities', {
+    //   flags: 4,
+    //   flyingSpeed: 0.05000000074505806,
+    //   walkingSpeed: 0.10000000149011612
+    // });
+    client.write('resource_pack_send', { url: 'https://download.nodecdn.net/containers/nodecraft/minepack/43cc295dd7a96334109c08d53f710e5d.zip', hash: 'null' });
   }
 };

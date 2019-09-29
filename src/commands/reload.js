@@ -15,10 +15,14 @@ module.exports = class DFProxy extends Command {
     this.dfproxy.commands.clear();
     this.dfproxy.serverPacketEvents.clear();
     this.dfproxy.serverPacketEvents.clear();
-    this.dfproxy.loadCommands('../commands/');
-    this.dfproxy.loadServerPacketsEvents('../serverpackets/', () => {
-      this.dfproxy.loadClientPacketsEvents('../clientpackets/', () => {
-        this.announce('Reloaded!');
+    this.dfproxy.loadCommands('../commands/', () => {
+      this.dfproxy.loadServerPacketsEvents('../serverpackets/', () => {
+        this.dfproxy.loadClientPacketsEvents('../clientpackets/', () => {
+          this.announce('Reloaded!');
+          this.dfproxy.loadCustomActions('../customactions/', () => {
+            this.announce('Reloaded!');
+          });
+        });
       });
     });
   }
