@@ -45,6 +45,10 @@ class DFProxy {
       version: '1.13.2',
       dfproxy: this
     }).on('packet', (data, meta) => {
+      // console.log('SERVER PACKET: ' + meta.name);
+      if (meta.name === 'abilities') {
+        console.log(data);
+      }
       var serverPacketEvent = this.serverPacketEvents.get(meta.name);
       if (serverPacketEvent && serverPacketEvent.run) {
         serverPacketEvent.run(meta, data, this.client, this.proxyClient, this.proxy);
@@ -74,10 +78,7 @@ class DFProxy {
     console.log('Player joined!');
 
     client.on('packet', (data, meta) => {
-      console.log('CLIENT PACKET: ' + meta.name);
-      if (meta.name === 'held_item_slot') {
-        console.log(data);
-      }
+      // console.log('CLIENT PACKET: ' + meta.name);
 
       var clientPacketEvent = this.clientPacketEvents.get(meta.name);
       if (clientPacketEvent && clientPacketEvent.run) {

@@ -24,6 +24,6 @@ module.exports = class BlockPlace extends PacketEvent {
   }
 
   init () {
-    console.log('hi');
+    console.log('test');
   }
 };
