@@ -62,7 +62,7 @@ class DFProxy {
   }
 
   test () {
-    return 'hi';
+    return 'Test successful!';
   }
 
   clientLogin (client) {
