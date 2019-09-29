@@ -8,6 +8,6 @@ module.exports = class HeldItemSlot extends PacketEvent {
   }
 
   async run (meta, data, client, proxyClient, proxy) {
-    client.heldItemSlot = data.slotId;
+    client.slot = data.slot;
   }
 };
