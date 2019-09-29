@@ -11,6 +11,7 @@ class DFProxy {
     Object.defineProperty(this, 'serverPacketEvents', { value: new Map() });
     Object.defineProperty(this, 'clientPacketEvents', { value: new Map() });
 
+    Object.defineProperty(this, 'customActions', { value: new Map() });
     Object.defineProperty(this, 'commands', { value: new Map() });
     Object.defineProperty(this, 'aliases', { value: new Map() });
 
@@ -38,17 +39,17 @@ class DFProxy {
 
   loginProxyClient () {
     this.proxyClient = mc.createClient({
-      host: 'beta.mcdiamondfire.com',
+      host: 'mcdiamondfire.com',
       port: 25565,
       username: this.email,
       password: this.password,
       version: '1.13.2',
       dfproxy: this
     }).on('packet', (data, meta) => {
-      // console.log('SERVER PACKET: ' + meta.name);
-      if (meta.name === 'abilities') {
-        console.log(data);
+      if (!['world_particles', 'entity_equipment', 'boss_bar', 'entity_update_attributes', 'entity_look', 'entity_teleport', 'sound_effect', 'map_chunk', 'entity_head_rotation', 'entity_velocity', 'set_passengers', 'entity_metadata', 'entity_effect', 'player_info', 'entity_destroy', 'animation', 'scoreboard_objective', 'unload_chunk', 'block_change', 'set_slot', 'experience', 'chat', 'named_entity_spawn', 'spawn_entity_living', 'abilities', 'world_event', 'update_time', 'keep_alive', 'multi_block_change', 'update_time', 'tile_entity_data', 'teams'].includes(meta.name)) {
+        // console.log('SERVER PACKET: ' + meta.name);
       }
+
       var serverPacketEvent = this.serverPacketEvents.get(meta.name);
       if (serverPacketEvent && serverPacketEvent.run) {
         serverPacketEvent.run(meta, data, this.client, this.proxyClient, this.proxy);
@@ -78,7 +79,12 @@ class DFProxy {
     console.log('Player joined!');
 
     client.on('packet', (data, meta) => {
-      // console.log('CLIENT PACKET: ' + meta.name);
+      if (!['world_particles', 'entity_equipment', 'boss_bar', 'entity_update_attributes', 'entity_look', 'entity_teleport', 'sound_effect', 'map_chunk', 'entity_head_rotation', 'entity_velocity', 'set_passengers', 'entity_metadata', 'entity_effect', 'player_info', 'entity_destroy', 'animation', 'scoreboard_objective', 'unload_chunk', 'block_change', 'set_slot', 'experience', 'chat', 'named_entity_spawn', 'spawn_entity_living', 'abilities', 'world_event', 'update_time', 'keep_alive', 'multi_block_change', 'update_time', 'tile_entity_data', 'teams'].includes(meta.name)) {
+        // console.log(meta.name);
+        // if (meta.name === 'set_creative_slot') {
+        //   console.log(JSON.stringify(this.Item.fromNotch(data.item)));
+        // }
+      }
 
       var clientPacketEvent = this.clientPacketEvents.get(meta.name);
       if (clientPacketEvent && clientPacketEvent.run) {
@@ -94,6 +100,7 @@ class DFProxy {
 
   filterPacketAndSend (data, meta, dest) {
     if (meta.name !== 'keep_alive' && meta.name !== 'update_time' && meta.name !== 'encryption_begin' && meta.name !== 'compress' && meta.name !== 'success') {
+      if (!dest) return console.log(new Error('Packet destination is invalid.'));
       if (!dest.write) return;
       dest.write(meta.name, data);
     }
@@ -107,14 +114,12 @@ class DFProxy {
       console.log(`Loading ${packetEvents.length} server packet events...`);
 
       packetEvents.forEach(async (packetevent, i) => {
-        const start = Date.now();
-
         const props = new (require(path.join(__dirname, `${dir}/${packetevent}`)))(this);
 
         if (props.init) props.init(this);
 
         this.serverPacketEvents.set(props.name, props);
-        console.log(`Loaded server packet event ${props.name} in ${Date.now() - start}ms (${i + 1}/${packetEvents.length}).`);
+        console.log(`Loaded server packet event ${props.name} (${i + 1}/${packetEvents.length}).`);
         if (i === packetEvents.length - 1) {
           cb();
         }
@@ -130,14 +135,12 @@ class DFProxy {
       console.log(`Loading ${packetEvents.length} client packet events...`);
 
       packetEvents.forEach(async (packetevent, i) => {
-        const start = Date.now();
-
         const props = new (require(path.join(__dirname, `${dir}/${packetevent}`)))(this);
 
         if (props.init) props.init(this);
 
         this.clientPacketEvents.set(props.name, props);
-        console.log(`Loaded client packet event ${props.name} in ${Date.now() - start}ms (${i + 1}/${packetEvents.length}).`);
+        console.log(`Loaded client packet event ${props.name} (${i + 1}/${packetEvents.length}).`);
         if (i === packetEvents.length - 1) {
           cb();
         }
@@ -145,7 +148,7 @@ class DFProxy {
     });
   }
 
-  loadCommands (dir) {
+  loadCommands (dir, cb) {
     fs.readdir(path.join(__dirname, `${dir}`), (error, commands) => {
       if (error) {
         return console.log(error);
@@ -153,14 +156,36 @@ class DFProxy {
       console.log(`Loading ${commands.length} commands...`);
 
       commands.forEach(async (command, i) => {
-        const start = Date.now();
-
         const props = new (require(path.join(__dirname, `${dir}/${command}`)))(this);
 
         if (props.init) await props.init(this);
 
         this.commands.set(props.name, props);
-        console.log(`Loaded command ${props.name} in ${Date.now() - start}ms.`);
+        console.log(`Loaded command ${props.name} (${i}/${commands.length}).`);
+        if (i === commands.length - 1) {
+          cb();
+        }
+      });
+    });
+  }
+
+  loadCustomActions (dir, cb) {
+    fs.readdir(path.join(__dirname, `${dir}`), (error, customActions) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log(`Loading ${customActions.length} custom actions...`);
+
+      customActions.forEach(async (customaction, i) => {
+        const props = new (require(path.join(__dirname, `${dir}/${customaction}`)))(this);
+
+        if (props.init) await props.init(this);
+
+        this.customActions.set(props.name, props);
+        console.log(`Loaded custom action ${props.name} (${i + 1}/${customActions.length}).`);
+        if (i === customActions.length - 1) {
+          cb();
+        }
       });
     });
   }

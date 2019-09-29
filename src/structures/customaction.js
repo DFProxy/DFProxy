@@ -1,4 +1,4 @@
-class Command {
+class CustomAction {
   constructor (dfproxy, options) {
     this.dfproxy = dfproxy;
 
@@ -8,15 +8,13 @@ class Command {
   }
 
   chat (text) {
-    if (!this.dfproxy.client) return;
     this.dfproxy.client.write('chat', { message: `{"extra":[{"text":"${text}"}],"text":""}`, position: 1 });
   }
 
   announce (text) {
-    if (!this.dfproxy.client) return;
     this.dfproxy.client.write('title', { action: 0, text: '{"extra":[{"color":"gray","text":"["},{"color":"green","text":"DFProxy"},{"color":"gray","text":"]"}],"text":""}' });
     this.dfproxy.client.write('title', { action: 1, text: `{"extra":[{"color":"aqua","text":"${text}"}],"text":""}` });
   }
 }
 
-module.exports = Command;
+module.exports = CustomAction;
