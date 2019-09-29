@@ -12,15 +12,18 @@ if (!process.env.CI) {
   dfproxy = new DFProxy({ port: config.port, email: process.env.email, password: process.env.password });
 }
 
-dfproxy.loadCommands('../commands/');
-dfproxy.loadServerPacketsEvents('../serverpackets/', () => {
-  dfproxy.loadClientPacketsEvents('../clientpackets/', () => {
-    if (process.env.CI) {
-      console.log('Done loading! Seems like we are in a CI. Exiting with code 0.');
-      process.exit(0);
-    } else {
-      console.log('Done loading!');
-    }
+dfproxy.loadCommands('../commands/', () => {
+  dfproxy.loadServerPacketsEvents('../serverpackets/', () => {
+    dfproxy.loadClientPacketsEvents('../clientpackets/', () => {
+      dfproxy.loadCustomActions('../customactions', () => {
+        if (process.env.CI) {
+          console.log('Done loading! Seems like we are in a CI. Exiting with code 0.');
+          process.exit(0);
+        } else {
+          console.log('Done loading!');
+        }
+      });
+    });
   });
 });
 
