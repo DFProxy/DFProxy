@@ -1,4 +1,8 @@
 class PacketEvent {
+      /**
+             * Spammy :)
+             * @type {Spammy}
+             */
   constructor (dfproxy, options) {
     this.dfproxy = dfproxy;
 
