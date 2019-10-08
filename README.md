@@ -16,6 +16,16 @@ SiebeDW, Goseale, LittleWhole - and you, the contributor!
 ## Installation
 ### Prerequisites
 In order to run DFProxy, you need at least Node v10.0 or later.
+
+Also, you will need to put your credentials in a configuration file stored on your local machine that *nobody* can access.
+#### Why do I need to put my credentials?
+DFProxy works by creating a server on localhost and creating a client with your player on that server. Because of the way Minecraft servers work, Mojang needs to authenticate your user with valid credentials. You need to specify your credentials in a configuration file so DFProxy can authenticate it with Mojang.
+
+We, the developers, do not store your credentials. No one that does not have access to your computer can access it. Your credentials are stored on your PC **only**. It is entirely safe to type in your credentials.
+
+If we haven't gained your full trust, you can look at the code in this repository, or you can research a little about how Minecraft servers work technically.
+
+**Never download DFProxy from forks, other repositories, or external sites. The only place where you should download DFProxy is in the DFProxy/DFProxy repo. You should only download from our [releases page](https://github.com/DFProxy/DFProxy/releases) and download the latest version only. Not adhereing to this warning may compromise the security of your Minecraft account.*(
 ### Linux
 1. Download the source code tarball from the releases page.
 2. Unzip the tarball.
