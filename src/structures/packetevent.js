@@ -1,12 +1,8 @@
 class PacketEvent {
-  /**
-             * Spammy :)
-             * @type {Spammy}
-             */
   constructor (dfproxy, options) {
     this.dfproxy = dfproxy;
 
-    this.name = options.name; // Packet name
+    this.name = options.name;
     this.canceled = false;
   }
 
