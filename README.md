@@ -18,11 +18,15 @@ In order to run DFProxy, you need at least Node v10.0 or later.
 $ cd ~/DFProxy-v1.0.0
 ```
 4. Edit `config.json` and enter your email and password that you want to log in with.
-5. Run index.js:
+5. `cd` to the `src` folder:
+```sh
+$ cd ./src
+```
+6. Run index.js:
 ```sh
 $ node index.js
 ```
-6. Connect to `localhost:25566` and you're set!
+7. Connect to `localhost:25566` and you're set!
 ## Usage
 Info soon
 ## Feature List
