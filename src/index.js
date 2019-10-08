@@ -38,7 +38,7 @@ function error (err) {
   }
   console.log('ERROR!\n' + err);
   if (dfproxy.client) {
-    dfproxy.client.end('§cWhooops! Error found :(!\nRejoin to play again!\n§c§lPlease report the error (logged in console) in our discord!');
+    dfproxy.client.end('§cWhooops! Error found :(!\nRejoin to play again (Might not be possible)!\n§c§lPlease report the error (logged in console) in our discord!');
     dfproxy.client = undefined;
     dfproxy.proxyClient = undefined;
   }
