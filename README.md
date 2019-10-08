@@ -25,7 +25,7 @@ We, the developers, do not store your credentials. No one that does not have acc
 
 If we haven't gained your full trust, you can look at the code in this repository, or you can research a little about how Minecraft servers work technically.
 
-**Never download DFProxy from forks, other repositories, or external sites. The only place where you should download DFProxy is in the DFProxy/DFProxy repo. You should only download from our [releases page](https://github.com/DFProxy/DFProxy/releases) and download the latest version only. Not adhereing to this warning may compromise the security of your Minecraft account.*(
+**Never download DFProxy from forks, other repositories, or external sites. The only place where you should download DFProxy is in the DFProxy/DFProxy repo. You should only download from our [releases page](https://github.com/DFProxy/DFProxy/releases) and download the latest version only. Not adhereing to this warning may compromise the security of your Minecraft account.**
 ### Linux
 1. Download the source code tarball from the releases page.
 2. Unzip the tarball.
