@@ -1,6 +1,7 @@
 # DFProxy
 [![Travis CI](https://img.shields.io/travis/DFProxy/DFProxy)](https://travis-ci.org/DFProxy/DFProxy)
 [![Minecraft](https://img.shields.io/badge/minecraft-1.13.2-informational)](https://minecraft.gamepedia.com/Java_Edition_1.13.2/)
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat)](https://github.com/standard/semistandard)
 
 DFProxy is a proxy that tunnels your connection to DiamondFire - a central proxy with many users that enables many unprecendented features. Client-side mods like our predecessor [DFTools](https://github.com/KSashaDF/DFTools) (previously DFUtils) were only able to achieve what was limited by the client - but DFProxy is a new take on modifying and enhancing the [DiamondFire experience](https://mcdiamondfire.com).
 

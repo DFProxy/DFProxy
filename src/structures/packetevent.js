@@ -1,5 +1,5 @@
 class PacketEvent {
-      /**
+  /**
              * Spammy :)
              * @type {Spammy}
              */
