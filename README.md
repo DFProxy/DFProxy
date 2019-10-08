@@ -29,6 +29,11 @@ $ node index.js
 ```
 7. Connect to `localhost:25566` and you're set!
 ## Usage
-Info soon
+To use DFProxy, follow the installation procedure above. Once you connect to `localhost:25566` you should be in DiamondFire, tunneled by DFProxy. To make sure your connection is actually tunneled, upon joining you should see a title saying `[DFProxy] Your connection is tunneled!`
+
+In order to use custom actions, place a SendMessage and send `DFPROXY|<ACTIONNAME>|<ARGS>`.
+
+Run the /dfproxy command for a full list of all commands.
 ## Feature List
-Info soon - probs will be moved to the Wiki
+* More Commands
+* Custom Actions (Send Resource Pack, Send To Plot, etc.)
