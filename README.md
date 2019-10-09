@@ -8,7 +8,7 @@
 
 **The managers of this project are LittleWhole, SiebeDW, and Goseale.**
 
-DFProxy is a proxy that tunnels your connection to DiamondFire - a central proxy with many users that enables many unprecendented features. Client-side mods like our predecessor [DFTools](https://github.com/KSashaDF/DFTools) (previously DFUtils) were only able to achieve what was limited by the client - but DFProxy is a new take on modifying and enhancing the [DiamondFire experience](https://mcdiamondfire.com).
+DFProxy is a proxy that tunnels your connection to DiamondFire - a central proxy with many users that enables many unprecendented features. Client-side mods like [DFTools](https://github.com/KSashaDF/DFTools) (previously DFUtils) were only able to achieve what was limited by the client - but DFProxy is a new take on modifying and enhancing the [DiamondFire experience](https://mcdiamondfire.com).
 
 Things like custom commands, custom actions (send resource pack, send to plot) and more server-based features are all included in DFProxy.
 ## Developers
@@ -26,24 +26,30 @@ We, the developers, do not store your credentials. No one that does not have acc
 If we haven't gained your full trust, you can look at the code in this repository, or you can research a little about how Minecraft servers work technically.
 
 **Never download DFProxy from forks, other repositories, or external sites. The only place where you should download DFProxy is in the DFProxy/DFProxy repo. You should only download from our [releases page](https://github.com/DFProxy/DFProxy/releases) and download the latest version only. Not adhereing to this warning may compromise the security of your Minecraft account.**
-### Linux
+### Linux/macOS
 1. Download the source code tarball from the releases page.
 2. Unzip the tarball.
-3. `cd` to the unzipped directory:
+3. Open Terminal.
+4. `cd` to the unzipped directory:
 ```sh
 $ cd ~/DFProxy-v1.0.0
 ```
-4. Edit `config.json` and enter your email and password that you want to log in with.
-5. `cd` to the `src` folder:
+5. Edit `config.json` and enter your email and password that you want to log in with.
+6. `cd` to the `src` folder:
 ```sh
 $ cd ./src
 ```
-6. Run index.js:
+7. Run index.js:
 ```sh
 $ node index.js
 ```
-7. Connect to `localhost:25566` and you're set!
+8. Connect to `localhost:25566` and you're set!
 ## Usage
-Info soon
+To use DFProxy, follow the installation procedure above. Once you connect to `localhost:25566` you should be in DiamondFire, tunneled by DFProxy. To make sure your connection is actually tunneled, upon joining you should see a title saying `[DFProxy] Your connection is tunneled!`
+
+In order to use custom actions, place a SendMessage and send `DFPROXY|<ACTIONNAME>|<ARGS>`.
+
+Run the /dfproxy command for a full list of all commands.
 ## Feature List
-Info soon - probs will be moved to the Wiki
+* More Commands
+* Custom Actions (Send Resource Pack, Send To Plot, etc.)
