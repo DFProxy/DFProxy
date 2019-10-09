@@ -4,7 +4,8 @@ let dfproxy;
 
 if (!process.env.CI) {
   if (!config.email || !config.password || !config.port) {
-    dfproxy = new DFProxy({ port: 25565, email: 'smack--snack@hotmail.com', password: 'santsnack1995' });
+    console.log('There is no username/password/port in the config! Exiting in 15 seconds...');
+    process.exit(1);
   } else {
     dfproxy = new DFProxy({ port: config.port, email: config.email, password: config.password });
   }
@@ -37,7 +38,7 @@ function error (err) {
   }
   console.log('ERROR!\n' + err);
   if (dfproxy.client) {
-    dfproxy.client.end('§cWhooops! Error found :(!\nRejoin to play again!\n§c§lPlease report the error (logged in console) in our discord!');
+    dfproxy.client.end('§cWhooops! Error found :(!\nRejoin to play again (Might not be possible)!\n§c§lPlease report the error (logged in console) in our discord!');
     dfproxy.client = undefined;
     dfproxy.proxyClient = undefined;
   }
