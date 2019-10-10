@@ -4,7 +4,7 @@
   "description": "[![Travis CI](https://img.shields.io/travis/DFProxy/DFProxy)](https://travis-ci.org/DFProxy/DFProxy)\r [![Minecraft](https://img.shields.io/badge/minecraft-1.13.2-informational)](https://minecraft.gamepedia.com/Java_Edition_1.13.2/)",
   "main": "index.js",
   "scripts": {
-    "test": "semistandard && node src/index.js",
+    "test": "semistandard --fix && node src/index.js",
     "lint": "semistandard",
     "fix": "semistandard --fix"
   },
