@@ -10,9 +10,9 @@ module.exports = class SENDTOPLOT extends CustomAction {
   }
 
   async run (args, client, proxyClient, proxy) {
-    proxyClient.sendCommand('leave');
+    this.execute('leave');
     setTimeout(() => {
-      proxyClient.sendCommand(`join ${args[0]}`);
+      this.execute(`join ${args[0]}`);
     }, 3000);
     this.chat('§aYou were sent to another plot using a DFProxy custom action.');
   }
