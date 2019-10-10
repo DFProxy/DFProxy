@@ -3,6 +3,15 @@
 [![Travis CI](https://img.shields.io/travis/DFProxy/DFProxy)](https://travis-ci.org/DFProxy/DFProxy)
 [![Minecraft](https://img.shields.io/badge/minecraft-1.13.2-informational)](https://minecraft.gamepedia.com/Java_Edition_1.13.2/)
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat)](https://github.com/standard/semistandard)
+[![Latest Prerelease](https://img.shields.io/github/v/release/DFProxy/DFProxy?include_prereleases&label=prerelease%20version)](https://github.com/DFProxy/DFProxy/releases)
+[![Latest Version](https://img.shields.io/github/v/release/DFProxy/DFProxy?label=version)](https://github.com/DFProxy/DFProxy/releases/latest)
+[![Tested npm Version](https://img.shields.io/badge/tested%20npm%20version-6.12.0-informational)](https://npmjs.com)
+[![Tested NodeJS Version](https://img.shields.io/badge/tested%20nodejs%20version-12.11.1-informational)](https://nodejs.org)
+[![NodeJS Minimum Version](https://img.shields.io/badge/node-%3E%3D%2010.0.0-success)](https://nodejs.org)
+[![Platform](https://img.shields.io/badge/platform-windows%20%7C%20macos%20%7C%20linux-inactive)](https://www.microsoft.com/windows)
+[![Discord Online](https://img.shields.io/discord/625767719035469875)](https://discord.gg/DxWHKZj)
+[![Discord](https://discordapp.com/api/guilds/625767719035469875/embed.png?style=shield)](https://discord.gg/DxWHKZj)
+
 
 ***__DISCLAIMER:__*** **This is NOT an official DiamondFire project.  It is NOT managed by DiamondFire and DiamondFire is NOT responsible for the contents or use of this project.**
 
