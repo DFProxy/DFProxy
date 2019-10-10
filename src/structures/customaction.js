@@ -15,7 +15,9 @@ class CustomAction {
     this.dfproxy.client.write('title', { action: 0, text: '{"extra":[{"color":"gray","text":"["},{"color":"green","text":"DFProxy"},{"color":"gray","text":"]"}],"text":""}' });
     this.dfproxy.client.write('title', { action: 1, text: `{"extra":[{"color":"aqua","text":"${text}"}],"text":""}` });
   }
-  sudo (command) {
+
+  execute (command) {
+    this.dfproxy.client.write('chat', { message: `{"extra":[{"text":"/${command}"}],"text":""}`, position: 1 } })
   }
 }
 
