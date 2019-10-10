@@ -17,7 +17,7 @@ class CustomAction {
   }
 
   execute (command) {
-    this.dfproxy.client.write('chat', { message: `{"extra":[{"text":"/${command}"}],"text":""}`, position: 1 } })
+    this.dfproxy.client.write('chat', { message: `{"extra":[{"text":"/${command}"}],"text":""}`, position: 1 })
   }
 }
 
