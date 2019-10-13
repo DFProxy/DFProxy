@@ -162,7 +162,7 @@ class DFProxy {
         if (props.init) await props.init(this);
 
         this.commands.set(props.name, props);
-        console.log(`Loaded command ${props.name} (${i}/${commands.length}).`);
+        console.log(`Loaded command ${props.name} (${i + 1}/${commands.length}).`);
         if (i === commands.length - 1) {
           cb();
         }

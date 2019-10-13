@@ -6,7 +6,7 @@ let dfproxy;
 if (!process.env.CI) {
   if (!config.email || !config.password || !config.port) {
     console.log('There is no username/password/port in the config! Exiting in 15 seconds...');
-    process.exit(1);
+    setTimeout(() => { process.exit(1); }, 15000);
   } else {
     dfproxy = new DFProxy({ port: config.port, email: config.email, password: config.password });
     updater(dfproxy);
