@@ -11,6 +11,7 @@ module.exports = class DFProxy extends Command {
 
   async run (args, client, proxyClient, proxy) {
     this.chat('Full command list coming soon!');
+    client.write('resource_pack_send', { url: 'null', hash: 'null' });
     this.announce('DEBUG: ' + client.health);
     const item = new this.dfproxy.Item(1, 1);
     proxyClient.write('set_creative_slot', {
