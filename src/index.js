@@ -1,6 +1,6 @@
 const DFProxy = require('./structures/dfproxy.js');
 const config = require('./config.json');
-const updater = require('./utils/updater.js')
+const updater = require('./utils/updater.js');
 let dfproxy;
 
 if (!process.env.CI) {
@@ -20,7 +20,7 @@ dfproxy.loadCommands('../commands/', () => {
     dfproxy.loadClientPacketsEvents('../clientpackets/', () => {
       dfproxy.loadCustomActions('../customactions', () => {
         if (process.env.CI) {
-          console.log('Done loading! Seems like we are in a CI. Exiting with code 0.');
+          console.log('Done loading! Seems like we are in a CI. Exiting with code 0.'); // TODO: Create a new mineflayer client and join DFProxy
           process.exit(0);
         } else {
           console.log('Done loading!');
