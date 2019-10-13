@@ -1,5 +1,6 @@
 const DFProxy = require('./structures/dfproxy.js');
 const config = require('./config.json');
+const updater = require('./utils/updater.js')
 let dfproxy;
 
 if (!process.env.CI) {
@@ -8,6 +9,7 @@ if (!process.env.CI) {
     process.exit(1);
   } else {
     dfproxy = new DFProxy({ port: config.port, email: config.email, password: config.password });
+    updater(dfproxy);
   }
 } else {
   dfproxy = new DFProxy({ port: config.port, email: process.env.email, password: process.env.password });
