@@ -5,6 +5,7 @@ const item = require('prismarine-item')('1.13.2');
 const windows = require('prismarine-windows')('1.13.2').windows;
 
 const error = require('../utils/error.js');
+const updater = require('../utils/updater.js');
 
 class DFProxy {
   constructor (options) {

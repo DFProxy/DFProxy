@@ -16,10 +16,10 @@ module.exports = async dfproxy => {
     const comparableLatestVersion = latestVersion.split('.');
     const comparableCurrentVersion = currentVersion.split('.');
     if (comparableCurrentVersion[0] < comparableLatestVersion[0]) return dfproxy.client.end('Your DFProxy is outdated! Download the latest version at https://github.com/DFProxy/DFProxy/releases/latest.');
-    else if (comparableCurrentVersion[0] == comparableLatestVersion[0]) {
+    else if (comparableCurrentVersion[0] === comparableLatestVersion[0]) {
       if (comparableCurrentVersion[1] < comparableLatestVersion[1]) return dfproxy.client.end('Your DFProxy is outdated! Download the latest version at https://github.com/DFProxy/DFProxy/releases/latest.');
-      else if (comparableCurrentVersion[1] == comparableLatestVersion[1]) {
-        if (comparableCurrentVersion[2] < comparableCurrentVersion[2]) return dfproxy.client.end('Your DFProxy is outdated! Download the latest version at https://github.com/DFProxy/DFProxy/releases/latest.');
+      else if (comparableCurrentVersion[1] === comparableLatestVersion[1]) {
+        if (comparableCurrentVersion[2] < comparableLatestVersion[2]) return dfproxy.client.end('Your DFProxy is outdated! Download the latest version at https://github.com/DFProxy/DFProxy/releases/latest.');
         else return;
       }
     } else return;
