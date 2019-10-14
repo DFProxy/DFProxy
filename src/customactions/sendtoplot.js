@@ -11,9 +11,11 @@ module.exports = class SENDTOPLOT extends CustomAction {
 
   async run (args, client, proxyClient, proxy) {
     this.execute('leave');
-    setTimeout(() => {
-      this.execute(`join ${args[0]}`);
-    }, 3000);
-    this.chat('§aYou were sent to another plot using a DFProxy custom action.');
+    if (args[1] && args[1] === "beta") this.execute('server beta');
+    await new Promise(resolve => {
+      setTimeout(() => {
+        resolve(this.execute(`join ${args[0]}`));
+      }, 3000);
+    }).then(() => { this.chat('§aYou were sent to another plot using a DFProxy custom action.'); });
   }
 };
