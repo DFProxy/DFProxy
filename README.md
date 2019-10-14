@@ -24,7 +24,7 @@ Things like custom commands, custom actions (send resource pack, send to plot) a
 SiebeDW, Goseale, LittleWhole - and you, the contributor!
 ## Installation
 ### Prerequisites
-In order to run DFProxy, you need at least Node v10.0 or later.
+In order to run DFProxy, you need **at least NodeJS v10.0.0 or later**. [If you do not have it, you can download it here.](https://nodejs.org)
 
 Also, you will need to put your credentials in a configuration file stored on your local machine that *nobody* can access.
 #### Why do I need to put my credentials?
@@ -48,11 +48,11 @@ cd ./Downloads
 6. Edit `config.json` and enter your email and password that you want to log in with.
 7. `cd` to the `src` folder:
 ```batch
-$ cd ./src
+cd ./src
 ```
 8. Run index.js:
 ```sh
-$ node index.js
+node index.js
 ```
 9. Connect to `localhost:25566` and you're set!
 ### Linux/macOS
