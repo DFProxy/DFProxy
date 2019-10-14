@@ -35,6 +35,26 @@ We, the developers, do not store your credentials. No one that does not have acc
 If we haven't gained your full trust, you can look at the code in this repository, or you can research a little about how Minecraft servers work technically.
 
 **Never download DFProxy from forks, other repositories, or external sites. The only place where you should download DFProxy is in the DFProxy/DFProxy repo. You should only download from our [releases page](https://github.com/DFProxy/DFProxy/releases) and download the latest version only. Not adhereing to this warning may compromise the security of your Minecraft account.**
+### Windows
+Currently the Windows binary is not working, so please use these temporary instructions.
+1. Download the source code .zip from the releases page.
+2. Unzip the .zip.
+3. Open Command Prompt (Press Windows+R, then type in "cmd", and hit enter.)
+4. Locate where you downloaded and unzipped the .zip (most likely in your Downloads folder) and cd to it:
+```batch
+cd ./Downloads
+```
+5. Run `npm i`.
+6. Edit `config.json` and enter your email and password that you want to log in with.
+7. `cd` to the `src` folder:
+```batch
+$ cd ./src
+```
+8. Run index.js:
+```sh
+$ node index.js
+```
+9. Connect to `localhost:25566` and you're set!
 ### Linux/macOS
 1. Download the source code tarball from the releases page.
 2. Unzip the tarball.
@@ -43,16 +63,17 @@ If we haven't gained your full trust, you can look at the code in this repositor
 ```sh
 $ cd ~/DFProxy-v1.0.0
 ```
-5. Edit `config.json` and enter your email and password that you want to log in with.
-6. `cd` to the `src` folder:
+5. Run `npm i`.
+6. Edit `config.json` and enter your email and password that you want to log in with.
+7. `cd` to the `src` folder:
 ```sh
 $ cd ./src
 ```
-7. Run index.js:
+8. Run index.js:
 ```sh
 $ node index.js
 ```
-8. Connect to `localhost:25566` and you're set!
+9. Connect to `localhost:25566` and you're set!
 ## Usage
 To use DFProxy, follow the installation procedure above. Once you connect to `localhost:25566` you should be in DiamondFire, tunneled by DFProxy. To make sure your connection is actually tunneled, upon joining you should see a title saying `[DFProxy] Your connection is tunneled!`
 
