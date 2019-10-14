@@ -47,7 +47,7 @@ class DFProxy {
       dfproxy: this
     }).on('packet', (data, meta) => {
       if (!['world_particles', 'entity_equipment', 'boss_bar', 'entity_update_attributes', 'entity_look', 'entity_teleport', 'sound_effect', 'map_chunk', 'entity_head_rotation', 'entity_velocity', 'set_passengers', 'entity_metadata', 'entity_effect', 'player_info', 'entity_destroy', 'animation', 'scoreboard_objective', 'unload_chunk', 'block_change', 'set_slot', 'experience', 'chat', 'named_entity_spawn', 'spawn_entity_living', 'abilities', 'world_event', 'update_time', 'keep_alive', 'multi_block_change', 'update_time', 'tile_entity_data', 'teams'].includes(meta.name)) {
-        // console.log('SERVER PACKET: ' + meta.name);
+        //console.log('SERVER PACKET: ' + meta.name);
       }
 
       var serverPacketEvent = this.serverPacketEvents.get(meta.name);
@@ -84,6 +84,11 @@ class DFProxy {
         // if (meta.name === 'set_creative_slot') {
         //   console.log(JSON.stringify(this.Item.fromNotch(data.item)));
         // }
+      }
+
+      if (meta.name == "position") {
+        this.client.position = data;
+        //console.log("X pos:" + this.client.position.x)
       }
 
       var clientPacketEvent = this.clientPacketEvents.get(meta.name);
