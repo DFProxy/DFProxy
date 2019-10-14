@@ -48,11 +48,11 @@ cd ./Downloads
 6. Edit `config.json` and enter your email and password that you want to log in with.
 7. `cd` to the `src` folder:
 ```batch
-$ cd ./src
+cd ./src
 ```
 8. Run index.js:
 ```sh
-$ node index.js
+node index.js
 ```
 9. Connect to `localhost:25566` and you're set!
 ### Linux/macOS
