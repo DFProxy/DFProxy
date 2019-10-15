@@ -2,4 +2,3 @@ node_modules
 src/config.json
 .npmrc
 DFProxy.exe
-config.json
