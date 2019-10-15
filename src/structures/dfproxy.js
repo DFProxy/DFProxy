@@ -86,7 +86,7 @@ class DFProxy {
         // }
       }
 
-      if (meta.name == "position") {
+      if (meta.name === "position") {
         this.client.position = data;
         //console.log("X pos:" + this.client.position.x)
       }
