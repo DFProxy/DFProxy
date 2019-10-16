@@ -26,13 +26,13 @@ if (dfproxy) {
             process.exit(0);
           } else {
             console.log('Done loading!\n' +
-            chalk.white.bold.strikethrough("======================================================\n") +
-            chalk.black.bgCyan.bold.underline("WELCOME TO DFPROXY\n") +
-            chalk.magenta("DFProxy has started!\n") +
-            chalk.blue("The DFProxy proxy client has been successfully created.\nConnect to localhost:25566 (note the port 25566) and you should be tunneled to DiamondFire!\n\n") +
-            chalk.white.bgRed.bold.underline("ERROR & BUG REPORTING\n") +
-            chalk.blue("Along the way with your experience with DFProxy, you may encounter bugs or errors.\nWe try our best to rid DFProxy of all bugs, but sometimes we miss some, especially with a new patch.\nIf you encounter an error or a bug, simply create an issue on our GitHub repository or DM one of the developers - LittleWhole#1337, Goseale#6992, or SiebeDW#4501 - with the error or bug and your DFProxy version.\nWe will try to push out a fix promptly.\n") +
-            chalk.white.bold.strikethrough("======================================================")
+            chalk.white.bold.strikethrough('======================================================\n') +
+            chalk.black.bgCyan.bold.underline('WELCOME TO DFPROXY\n') +
+            chalk.magenta('DFProxy has started!\n') +
+            chalk.blue('The DFProxy proxy client has been successfully created.\nConnect to localhost:25566 (note the port 25566) and you should be tunneled to DiamondFire!\n\n') +
+            chalk.white.bgRed.bold.underline('ERROR & BUG REPORTING\n') +
+            chalk.blue('Along the way with your experience with DFProxy, you may encounter bugs or errors.\nWe try our best to rid DFProxy of all bugs, but sometimes we miss some, especially with a new patch.\nIf you encounter an error or a bug, simply create an issue on our GitHub repository or DM one of the developers - LittleWhole#1337, Goseale#6992, or SiebeDW#4501 - with the error or bug and your DFProxy version.\nWe will try to push out a fix promptly.\n') +
+            chalk.white.bold.strikethrough('======================================================')
             );
           }
         });
