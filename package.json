@@ -21,7 +21,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "minecraft-protocol": "^1.9.4",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "prismarine-item": "^1.1.1",
     "prismarine-windows": "^1.1.0"
   },
